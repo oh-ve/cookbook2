@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { client } from "./client";
 
-export default function Home() {
+export default function Home(props) {
   return <div>Home</div>;
 }

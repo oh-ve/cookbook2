@@ -1,13 +1,16 @@
-
 import { useEffect, useState } from "react";
 import { client } from "./client";
 import Navbar from "./components/Navbar";
 import "./App.css";
-
+import Home from "./components/Home";
+import Breakfast from "./components/Breakfast";
+import Lunch from "./components/Lunch";
+import Dinner from "./components/Dinner";
+import Dessert from "./components/Dessert";
+import Recipes from "./components/Recipes";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-
-
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -16,7 +19,7 @@ function App() {
       .then((res) => {
         setRecipes(res.items);
 
-        console.log(res.items);
+        //     console.log(res.items);
       })
 
       .catch((e) => console.log(e));
@@ -25,22 +28,14 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      {/* <Routes>
-        <Route path="/" element=></Route>
-        <Route></Route>
-      </Routes> */}
-      <h1>Hello</h1>
-      {recipes.map((recipe) => (
-        <div>
-          <h1>{recipe.fields.title}</h1>
-          <img
-            src={recipe.fields.image.fields.file.url}
-            width="200px"
-            height="200px"
-          />
-        </div>
-      ))}
-
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/breakfast" element={<Breakfast recipes={recipes} />} />
+        <Route path="/lunch" element={<Lunch recipes={recipes} />} />
+        <Route path="/dinner" element={<Dinner recipes={recipes} />} />
+        <Route path="/dessert" element={<Dessert recipes={recipes} />} />
+        <Route path="/recipes" element={<Recipes recipes={recipes} />} />
+      </Routes>
     </div>
   );
 }
