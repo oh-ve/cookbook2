@@ -1,10 +1,13 @@
-import { Routes, Route } from "react-router-dom";
+
 import { useEffect, useState } from "react";
 import { client } from "./client";
 import Navbar from "./components/Navbar";
 import "./App.css";
 
+
 function App() {
+
+
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -37,6 +40,7 @@ function App() {
           />
         </div>
       ))}
+
     </div>
   );
 }

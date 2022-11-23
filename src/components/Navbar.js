@@ -1,17 +1,25 @@
+
 import React from "react";
 //import { Routes, Route } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import "./components/navbar.css";
 
-export default function Navbar() {
+const Navbar = () => {
+
+ 
   return (
-    <div>
-      <h1>Navbar</h1>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/breakfast">Breakfast</NavLink>
-        <NavLink to="/lunch">Lunch</NavLink>
-        <NavLink to="/dinner">Dinner</NavLink>
-      </nav>
-    </div>
+    <nav className="navbar">
+      <h1>Barmy British Food</h1>
+      <div className="links">
+        <Navlink to="/">Home</Navlink>
+        <Navlink to="/recipes">Breakfast</Navlink>
+        <Navlink to="/recipes">Lunch</Navlink>
+        <Navlink to="/recipes">Dinner</Navlink>
+        <Navlink to="/recipes">Desert</Navlink>
+      </div>
+    </nav>
   );
-}
+};
+
+export default Navbar;
+
