@@ -1,6 +1,6 @@
-import "./App.css";
+import "../App.css";
 import { useEffect, useState } from "react";
 
-export default function Categories() {
+export default function Lunch(props) {
   return <div></div>;
 }
