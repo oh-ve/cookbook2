@@ -23,7 +23,15 @@ export default function Recipes({ recipes }) {
       </div>
       <h1>{SingleRecipe.fields.title}</h1>
       <p>Rating: {SingleRecipe.fields.rating} / 10</p>
-      <p>{SingleRecipe.fields.ingredients}</p>
+      <p>
+        Ingredients:{" "}
+        {SingleRecipe.fields.ingredients.map((ingredient) => (
+          <div>
+            <input type="checkbox" id="scales" name="scales"></input>
+            {ingredient}
+          </div>
+        ))}
+      </p>
       <p>{SingleRecipe.fields.instructions}</p>
     </div>
   );
