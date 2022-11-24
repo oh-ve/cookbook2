@@ -30,12 +30,15 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="breakfast" element={<Breakfast recipes={recipes} />} />
-        <Route path="lunch" element={<Lunch recipes={recipes} />} />
-        <Route path="dinner" element={<Dinner recipes={recipes} />} />
-        <Route path="dessert" element={<Dessert recipes={recipes} />} />
-        <Route path="recipes" element={<Recipes recipes={recipes} />} />
+
+        <Route path="/" element={<Home recipes={recipes} />} />
+        <Route path="/breakfast" element={<Breakfast recipes={recipes} />} />
+        <Route path="/lunch" element={<Lunch recipes={recipes} />} />
+        <Route path="/dinner" element={<Dinner recipes={recipes} />} />
+        <Route path="/dinner/:id" element={<Recipes recipes={recipes} />} />
+        <Route path="/dessert" element={<Dessert recipes={recipes} />} />
+        {/* <Route path="/recipes" element={<Recipes recipes={recipes} />} /> */}
+
       </Routes>
     </div>
   ) : (
