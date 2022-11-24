@@ -41,7 +41,7 @@ a.active {
   background-color: #ffffff;
   width: 100%;
   height: 20px;
-  color: $color-gray-one;
+  color: color-gray-one;
 }
 
 .searchbar {
