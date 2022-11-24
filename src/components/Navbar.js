@@ -3,6 +3,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./navbar.css";
 import SearchBar from "./Searchbar";
+import Flag from "./flag.jpg";
 
 const Navbar = () => {
   return (
