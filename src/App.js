@@ -11,7 +11,7 @@ import Recipes from "./components/Recipes";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState();
 
   useEffect(() => {
     client
@@ -25,10 +25,12 @@ function App() {
       .catch((e) => console.log(e));
   }, []);
 
-  return (
+  return recipes ? (
     <div className="App">
       <Navbar />
+
       <Routes>
+
         <Route path="/" element={<Home recipes={recipes} />} />
         <Route path="/breakfast" element={<Breakfast recipes={recipes} />} />
         <Route path="/lunch" element={<Lunch recipes={recipes} />} />
@@ -36,8 +38,11 @@ function App() {
         <Route path="/dinner/:id" element={<Recipes recipes={recipes} />} />
         <Route path="/dessert" element={<Dessert recipes={recipes} />} />
         {/* <Route path="/recipes" element={<Recipes recipes={recipes} />} /> */}
+
       </Routes>
     </div>
+  ) : (
+    <div>Loading...</div>
   );
 }
 
