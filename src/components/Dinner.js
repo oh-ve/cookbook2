@@ -1,6 +1,5 @@
 import "../App.css";
 import { useEffect, useState } from "react";
-import { marked } from "marked";
 
 import { Link } from "react-router-dom";
 
