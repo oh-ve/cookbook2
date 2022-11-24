@@ -34,6 +34,14 @@ export default function Dinner(props) {
               width="200px"
               height="200px"
             />
+            <div className="star-rating">
+              {[...Array(recipe.fields.rating)].map(() => {
+                return <span className="star">&#9733;</span>;
+              })}
+              {[...Array(5 - recipe.fields.rating)].map(() => {
+                return <span className="star">&#9734;</span>;
+              })}
+            </div>
           </div>
         );
       })}
