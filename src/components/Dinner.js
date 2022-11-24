@@ -24,7 +24,6 @@ export default function Dinner(props) {
         const recipeInstruction = marked(recipe.fields.instructions);
         return (
           <div>
-            {recipe.fields.id}
             <Link to={`/dinner/${recipe.fields.id}`}>
               <h1>{recipe.fields.title}</h1>
             </Link>
