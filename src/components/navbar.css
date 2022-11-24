@@ -53,3 +53,7 @@ a.active {
   border: 1.5px solid #004d96;
   background-color: white;
 }
+
+.union {
+  padding-right: 15px;
+}

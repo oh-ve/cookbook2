@@ -9,6 +9,7 @@ import Dinner from "./components/Dinner";
 import Dessert from "./components/Dessert";
 import Recipes from "./components/Recipes";
 import { Routes, Route } from "react-router-dom";
+import Flag from "./components/flag.jpg";
 
 function App() {
   const [recipes, setRecipes] = useState();
