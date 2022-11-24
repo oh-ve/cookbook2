@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { marked } from "marked";
 
 export default function Recipes({ recipes }) {
   const { id } = useParams();
@@ -9,6 +10,8 @@ export default function Recipes({ recipes }) {
   );
   console.log("Hello recipes", SingleRecipe);
   console.log(recipes);
+
+  const recipeInstruction = marked(SingleRecipe.fields.instructions);
   // const SingleRecipe = recipes.find((t) => t.id === id);
   // console.log("Hello", SingleRecipe);
   return (
@@ -32,7 +35,9 @@ export default function Recipes({ recipes }) {
           </div>
         ))}
       </p>
-      <p>{SingleRecipe.fields.instructions}</p>
+
+      {/* <h5>Description: {console.log(recipe.fields.instructions)}</h5> */}
+      <section dangerouslySetInnerHTML={{ __html: recipeInstruction }} />
     </div>
   );
 }
