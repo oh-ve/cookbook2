@@ -1,12 +1,15 @@
 import "../App.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Lunch(props) {
   console.log("props", props.recipes);
   const lunches = props.recipes.filter((data) => {
     return data.fields.category === "Lunch";
   });
+
+  const navigate = useNavigate();
 
   return (
     <div className="App">
@@ -31,6 +34,8 @@ export default function Lunch(props) {
           </div>
         );
       })}
+      <button onClick={() => navigate("/breakfast")}>prev</button>
+      <button onClick={() => navigate("/dinner")}>next</button>
     </div>
   );
 }

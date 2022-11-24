@@ -2,6 +2,7 @@ import "../App.css";
 import { useEffect, useState } from "react";
 import { marked } from "marked";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Dinner(props) {
   console.log("props", props.recipes);
@@ -9,6 +10,7 @@ export default function Dinner(props) {
     return data.fields.category === "Dessert";
   });
   console.log("items", items);
+  const navigate = useNavigate();
 
   return (
     <div className="App">
@@ -18,6 +20,7 @@ export default function Dinner(props) {
 
       {items.map((recipe, key) => {
         const recipeInstruction = marked(recipe.fields.instructions);
+
         return (
           <div>
             <Link to={`/dinner/${recipe.fields.id}`}>
@@ -34,6 +37,7 @@ export default function Dinner(props) {
           </div>
         );
       })}
+      <button onClick={() => navigate("/dinner")}>prev</button>
     </div>
   );
 }

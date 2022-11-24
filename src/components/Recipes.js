@@ -14,6 +14,7 @@ export default function Recipes({ recipes }) {
   const recipeInstruction = marked(SingleRecipe.fields.instructions);
   // const SingleRecipe = recipes.find((t) => t.id === id);
   // console.log("Hello", SingleRecipe);
+
   return (
     <div>
       <div>
@@ -38,6 +39,7 @@ export default function Recipes({ recipes }) {
 
       {/* <h5>Description: {console.log(recipe.fields.instructions)}</h5> */}
       <section dangerouslySetInnerHTML={{ __html: recipeInstruction }} />
+      <button onClick={() => navigate(-1)}>Back to category</button>
     </div>
   );
 }
