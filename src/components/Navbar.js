@@ -8,8 +8,8 @@ import Flag from "./flag.jpg";
 const Navbar = () => {
   return (
     <nav className="navbar">
+      <img className="union" src={Flag} width="32px" height="42px" />
       <h1>Barmy British Food</h1>
-      <SearchBar />
 
       <div className="links">
         <NavLink to="/">Home</NavLink>
@@ -18,6 +18,7 @@ const Navbar = () => {
         <NavLink to="/dinner">Dinner</NavLink>
         <NavLink to="/dessert">Dessert</NavLink>
       </div>
+      {/* <SearchBar /> */}
     </nav>
   );
 };

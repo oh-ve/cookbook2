@@ -29,11 +29,7 @@ export default function Home(props) {
 
   return (
     <div id="home">
-      <div id="home-header">
-        <img src={Flag} width="50px" height="35px" />
-        <h1>Barmy British Food</h1>
-        <img src={Flag} width="50px" height="35px" />
-      </div>
+      <div id="home-header">{/* <h1>Barmy British Food</h1> */}</div>
       <div id="home-categories">
         <div class="home-categories">
           <Link to={`/breakfast`}>
