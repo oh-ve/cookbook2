@@ -28,7 +28,7 @@ function App() {
 
   return recipes ? (
     <div className="App">
-      <Navbar />
+      <Navbar recipes={recipes} />
 
       <Routes>
         <Route path="/" element={<Home recipes={recipes} />} />
