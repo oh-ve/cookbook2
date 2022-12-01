@@ -1,6 +1,6 @@
-import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { marked } from "marked";
+import styles from "./Recipes.css";
 
 export default function Recipes({ recipes }) {
   const { id } = useParams();
@@ -12,33 +12,43 @@ export default function Recipes({ recipes }) {
   console.log(recipes);
 
   const recipeInstruction = marked(SingleRecipe.fields.instructions);
-  // const SingleRecipe = recipes.find((t) => t.id === id);
-  // console.log("Hello", SingleRecipe);
 
   return (
     <div>
-      <div>
+      <div className="card">
         <img
           src={SingleRecipe.fields.image.fields.file.url}
           alt={SingleRecipe.fields.title}
-          width="200px"
-          height="200px"
+          className="card-image"
         />
       </div>
-      <h1>{SingleRecipe.fields.title}</h1>
-      <p>Rating: {SingleRecipe.fields.rating} / 10</p>
-      <p>
-        Ingredients:{" "}
+      <div className="card-body">
+        <h2>{SingleRecipe.fields.title}</h2>
+        <div className="star-rating">
+          {[...Array(SingleRecipe.fields.rating)].map(() => {
+            return <span className="star">&#9733;</span>;
+          })}
+          {[...Array(5 - SingleRecipe.fields.rating)].map(() => {
+            return <span className="star">&#9734;</span>;
+          })}
+        </div>
+
+        <h3>Ingredients:</h3>
         {SingleRecipe.fields.ingredients.map((ingredient) => (
-          <div>
+          <div className="check">
             <input type="checkbox" id="scales" name="scales"></input>
             {ingredient}
           </div>
         ))}
-      </p>
 
-      {/* <h5>Description: {console.log(recipe.fields.instructions)}</h5> */}
-      <section dangerouslySetInnerHTML={{ __html: recipeInstruction }} />
+        {/* <h5>Description: {console.log(recipe.fields.instructions)}</h5> */}
+        <h3>Instruction:</h3>
+        <section
+          className="section"
+          dangerouslySetInnerHTML={{ __html: recipeInstruction }}
+        />
+      </div>
+
       <button onClick={() => navigate(-1)}>
         Back to {SingleRecipe.fields.category.toLowerCase()}
       </button>

@@ -13,23 +13,19 @@ export default function Lunch(props) {
 
   return (
     <div className="App">
-      {/* <h1>Category: {props.recipes[0].fields.category}</h1>
-      <img src={props.recipes[0].fields.image.fields.file.url} />
-      <img src={props.recipes[1].fields.image.fields.file.url} /> */}
-
       {lunches.map((recipe, key) => {
         return (
           <div>
-            <Link to={`/lunch/${recipe.fields.id}`}>
+            <Link to={`/${recipe.fields.category}/${recipe.fields.id}`}>
               <h1>{recipe.fields.title}</h1>
-
-              {/* <h2>{recipe.items}</h2> */}
-              <img
-                src={recipe.fields.image.fields.file.url}
-                width="200px"
-                height="200px"
-              />
             </Link>
+            {/* <h2>{recipe.items}</h2> */}
+            <img
+              src={recipe.fields.image.fields.file.url}
+              width="200px"
+              height="200px"
+            />
+
             <div className="star-rating">
               {[...Array(recipe.fields.rating)].map(() => {
                 return <span className="star">&#9733;</span>;
