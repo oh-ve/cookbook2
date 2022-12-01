@@ -13,58 +13,34 @@ export default function Dessert(props) {
   const navigate = useNavigate();
 
   return (
-    <div className="App">
+    <div className="categories">
       {items.map((recipe, key) => {
         return (
-          <div>
-            <Link to={`/${recipe.fields.category}/${recipe.fields.id}`}>
-              <h1>{recipe.fields.title}</h1>
-            </Link>
-            {/* <h2>{recipe.items}</h2> */}
-            <img
-              src={recipe.fields.image.fields.file.url}
-              width="200px"
-              height="200px"
-            />
-
-            <div className="star-rating">
-              {[...Array(recipe.fields.rating)].map(() => {
-                return <span className="star">&#9733;</span>;
-              })}
-              {[...Array(5 - recipe.fields.rating)].map(() => {
-                return <span className="star">&#9734;</span>;
-              })}
-            </div>
-          </div>
-        );
-      })}
-      {items.map((recipe, key) => {
-        const recipeInstruction = marked(recipe.fields.instructions);
-
-        return (
-          <div>
-            <Link to={`/dessert/${recipe.fields.id}`}>
-              <h1>{recipe.fields.title}</h1>
+          <Link to={`/${recipe.fields.category}/${recipe.fields.id}`}>
+            <div className="items">
+              <div className="item-title">
+                <h1>{recipe.fields.title}</h1>
+                <div className="star-rating">
+                  {[...Array(recipe.fields.rating)].map(() => {
+                    return <span className="star">&#9733;</span>;
+                  })}
+                  {[...Array(5 - recipe.fields.rating)].map(() => {
+                    return <span className="star">&#9734;</span>;
+                  })}
+                </div>
+              </div>
 
               {/* <h2>{recipe.items}</h2> */}
-            </Link>
-            <img
-              src={recipe.fields.image.fields.file.url}
-              width="200px"
-              height="200px"
-            />
-            <div className="star-rating">
-              {[...Array(recipe.fields.rating)].map(() => {
-                return <span className="star">&#9733;</span>;
-              })}
-              {[...Array(5 - recipe.fields.rating)].map(() => {
-                return <span className="star">&#9734;</span>;
-              })}
+              <img
+                src={recipe.fields.image.fields.file.url}
+                width="200px"
+                height="200px"
+              />
             </div>
-            {/* <p>Rating: {recipe.fields.rating} / 5</p> */}
-          </div>
+          </Link>
         );
       })}
+
       <button onClick={() => navigate("/dinner")}>prev</button>
     </div>
   );

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import "./categories.css";
 
 // export default function Breakfast(props) {
 //   console.log(props.recipes);
@@ -45,36 +46,36 @@ export default function Breakfast(props) {
   const navigate = useNavigate();
 
   return (
-    <div className="App">
-      {/* <h1>Category: {props.recipes[0].fields.category}</h1>
-      <img src={props.recipes[0].fields.image.fields.file.url} />
-      <img src={props.recipes[1].fields.image.fields.file.url} /> */}
-
+    <div className="categories">
       {breakfasts.map((recipe, key) => {
         return (
-          <div>
-            <Link to={`/${recipe.fields.category}/${recipe.fields.id}`}>
-              <h1>{recipe.fields.title}</h1>
+          <Link to={`/${recipe.fields.category}/${recipe.fields.id}`}>
+            <div className="items">
+              <div className="item-title">
+                <h1>{recipe.fields.title}</h1>
 
-              {/* <h2>{recipe.items}</h2> */}
-            </Link>
-            <img
-              src={recipe.fields.image.fields.file.url}
-              width="200px"
-              height="200px"
-            />
-            <div className="star-rating">
-              {[...Array(recipe.fields.rating)].map(() => {
-                return <span className="star">&#9733;</span>;
-              })}
-              {[...Array(5 - recipe.fields.rating)].map(() => {
-                return <span className="star">&#9734;</span>;
-              })}
+                <div className="star-rating">
+                  {[...Array(recipe.fields.rating)].map(() => {
+                    return <span className="star">&#9733;</span>;
+                  })}
+                  {[...Array(5 - recipe.fields.rating)].map(() => {
+                    return <span className="star">&#9734;</span>;
+                  })}
+                </div>
+              </div>
+              <img
+                src={recipe.fields.image.fields.file.url}
+                width="200px"
+                height="200px"
+                className="item-img"
+              />
             </div>
-          </div>
+          </Link>
         );
       })}
-      <button onClick={() => navigate("/lunch")}>next</button>
+      <button className="button" onClick={() => navigate("/lunch")}>
+        next
+      </button>
     </div>
   );
 }

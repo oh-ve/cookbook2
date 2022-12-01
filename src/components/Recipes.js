@@ -49,9 +49,11 @@ export default function Recipes({ recipes }) {
             className="section"
             dangerouslySetInnerHTML={{ __html: recipeInstruction }}
           />
-          <button onClick={() => navigate(-1)}>
-            Back to {SingleRecipe.fields.category.toLowerCase()}
-          </button>
+          <div id="return">
+            <button onClick={() => navigate(-1)} className="btn">
+              Back to {SingleRecipe.fields.category.toLowerCase()}
+            </button>
+          </div>
         </div>
       </div>
     </div>

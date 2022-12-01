@@ -26,7 +26,9 @@ const SearchBar = (props) => {
           onChange={handleChange}
           value={searchInput}
         />
-        <button type="submit">Submit</button>
+        <button className="botton" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );

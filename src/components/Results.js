@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import styles from "./Results.css";
 
 export default function Results({ recipes }) {
   const { search } = useParams();
@@ -14,15 +15,14 @@ export default function Results({ recipes }) {
   return (
     <div>
       {result.map((recipe) => (
-        <div key={uuidv4()}>
+        <div key={uuidv4()} className="result">
           <Link to={`/${recipe.fields.category}/${recipe.fields.id}`}>
-            {recipe.fields.title}
+            <h2>{recipe.fields.title}</h2>
           </Link>
           <img
             src={recipe.fields.image.fields.file.url}
             alt={recipe.fields.title}
-            width="200px"
-            height="200px"
+            className="img"
           />
         </div>
       ))}
