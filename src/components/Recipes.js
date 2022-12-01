@@ -21,18 +21,19 @@ export default function Recipes({ recipes }) {
           alt={SingleRecipe.fields.title}
           className="card-image"
         />
+        <div className="detail">
+          <h2>{SingleRecipe.fields.title}</h2>
+          <div className="star-rating">
+            {[...Array(SingleRecipe.fields.rating)].map(() => {
+              return <span className="star">&#9733;</span>;
+            })}
+            {[...Array(5 - SingleRecipe.fields.rating)].map(() => {
+              return <span className="star">&#9734;</span>;
+            })}
+          </div>
+        </div>
       </div>
       <div className="card-body">
-        <h2>{SingleRecipe.fields.title}</h2>
-        <div className="star-rating">
-          {[...Array(SingleRecipe.fields.rating)].map(() => {
-            return <span className="star">&#9733;</span>;
-          })}
-          {[...Array(5 - SingleRecipe.fields.rating)].map(() => {
-            return <span className="star">&#9734;</span>;
-          })}
-        </div>
-
         <h3>Ingredients:</h3>
         {SingleRecipe.fields.ingredients.map((ingredient) => (
           <div className="check">
@@ -42,16 +43,17 @@ export default function Recipes({ recipes }) {
         ))}
 
         {/* <h5>Description: {console.log(recipe.fields.instructions)}</h5> */}
-        <h3>Instruction:</h3>
-        <section
-          className="section"
-          dangerouslySetInnerHTML={{ __html: recipeInstruction }}
-        />
+        <div className="method">
+          <h3>Instruction:</h3>
+          <section
+            className="section"
+            dangerouslySetInnerHTML={{ __html: recipeInstruction }}
+          />
+          <button onClick={() => navigate(-1)}>
+            Back to {SingleRecipe.fields.category.toLowerCase()}
+          </button>
+        </div>
       </div>
-
-      <button onClick={() => navigate(-1)}>
-        Back to {SingleRecipe.fields.category.toLowerCase()}
-      </button>
     </div>
   );
 }
