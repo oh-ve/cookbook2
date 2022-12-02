@@ -25,8 +25,8 @@
 .item-img {
   border-radius: 2px;
 }
-#button {
-  position: absolute;
+.button {
+  position: relative;
   background-color: #ed5778;
   border: none;
   color: white;

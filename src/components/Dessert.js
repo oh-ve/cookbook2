@@ -41,7 +41,9 @@ export default function Dessert(props) {
         );
       })}
 
-      <button onClick={() => navigate("/dinner")}>prev</button>
+      <button className="button" onClick={() => navigate("/dinner")}>
+        prev
+      </button>
     </div>
   );
 }

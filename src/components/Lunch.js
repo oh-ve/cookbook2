@@ -39,12 +39,15 @@ export default function Lunch(props) {
           </Link>
         );
       })}
-      <button className="button" onClick={() => navigate("/breakfast")}>
-        prev
-      </button>
-      <button className="button" onClick={() => navigate("/dinner")}>
-        next
-      </button>
+      <div>
+        <button className="button" onClick={() => navigate("/breakfast")}>
+          prev
+        </button>
+
+        <button className="button" onClick={() => navigate("/dinner")}>
+          next
+        </button>
+      </div>
     </div>
   );
 }
