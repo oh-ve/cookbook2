@@ -14,10 +14,7 @@ export default function Home(props) {
   // the call to that function should happen inside of a useEffect
 
   console.log(props.recipes);
-  const [breakfastUrl, setBreakfastUrl] = useState(false);
-  const [lunchUrl, setLunchUrl] = useState(false);
-  const [dinnerUrl, setDinnerUrl] = useState(false);
-  const [dessertsUrl, setDessertsUrl] = useState(false);
+  const [randomnum, SetRandom] = useState(0);
 
   const breakfasts = props.recipes.filter(
     (recipe) => recipe.fields.category === "Breakfast"
@@ -35,48 +32,86 @@ export default function Home(props) {
     (recipe) => recipe.fields.category === "Dessert"
   );
 
-  console.log("Breakfasts", breakfasts);
-  console.log(breakfasts[0].fields.image.fields.file.url);
-  const breakfast1 = breakfasts[0].fields.image.fields.file.url;
-  const breakfast2 = breakfasts[1].fields.image.fields.file.url;
-  const breakfast3 = breakfasts[2].fields.image.fields.file.url;
-  const breakfast4 = breakfasts[3].fields.image.fields.file.url;
-  console.log(breakfast1);
-  const breakfastfotos = [breakfast1, breakfast2, breakfast3, breakfast4];
+  // get Random image using function
+  function random(arr) {
+    const intervalId = setInterval(() => {
+      const len = arr.length;
+      SetRandom(Math.floor(Math.random() * len));
+    }, 3000);
+    return () => clearInterval(intervalId);
+  }
+  useEffect(() => {
+    random(breakfasts);
+  }, []);
+  console.log(
+    "breakfasturl",
+    breakfasts[randomnum].fields.image.fields.file.url
+  );
+  console.log("lunchurl", lunches[randomnum].fields.image.fields.file.url);
+  console.log("dinner", dinners[randomnum].fields.image.fields.file.url);
+  console.log("dessert", desserts[randomnum].fields.image.fields.file.url);
+  // const randomImageIndex = Math.floor(Math.random() * breakfasts.length);
+  // console.log(
+  //   "index",
+  //   breakfasts[randomImageIndex].fields.image.fields.file.url
+  // );
+  // const ary = [breakfasts, lunches, dinners, desserts];
+  // const myAry = ary.map((my) => console.log(my.ary));
+
+  // const b = breakfasts[randomImageIndex].fields.image.fields.file.url;
+  // const l = lunchUrl[randomImageIndex].fields.image.fields.file.url;
+
+  // setBreakfastUrl(b);
+  // useEffect(() => {
+  //   setBreakfastUrl(b);
+  // }, []);
+
+  // console.log("Breakfasts", breakfasts);
+  // console.log(breakfasts[0].fields.image.fields.file.url);
+  // const breakfast1 = breakfasts[0].fields.image.fields.file.url;
+  // const breakfast2 = breakfasts[1].fields.image.fields.file.url;
+  // const breakfast3 = breakfasts[2].fields.image.fields.file.url;
+  // const breakfast4 = breakfasts[3].fields.image.fields.file.url;
+  // console.log(breakfast1);
+  // const breakfastfotos = [breakfast1, breakfast2, breakfast3, breakfast4];
 
   // console.log(breakfastfotos[3]);
 
-  console.log("HEREE", breakfastUrl);
+  //console.log("HEREE", breakfastUrl);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      const renderImage = () => {
-        const randomImageIndex = Math.floor(
-          Math.random() * breakfastfotos.length
-        );
-        console.log("index", breakfastfotos[randomImageIndex]);
-        return setBreakfastUrl(breakfastfotos[randomImageIndex]);
-      };
-      renderImage();
-    }, 5000);
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     const renderImage = () => {
+  //       const randomImageIndex = Math.floor(
+  //         Math.random() * breakfastfotos.length
+  //       );
+  //       console.log("index", breakfastfotos[randomImageIndex]);
+  //       return setBreakfastUrl(breakfastfotos[randomImageIndex]);
+  //     };
+  //     renderImage();
+  //   }, 5000);
+  //   return () => {
+  //     clearInterval(intervalId);
+  //   };
+  // }, []);
 
   return (
     <div id="home">
       <div id="home-categories">
         <div class="home-categories">
           <Link to={`/breakfast`}>
-            <img src={breakfastUrl} width="300px" height="300px" />
+            <img
+              src={breakfasts[randomnum].fields.image.fields.file.url}
+              width="300px"
+              height="300px"
+            />
             <h1>{breakfasts[3].fields.category}</h1>
           </Link>
         </div>
         <div class="home-categories">
           <Link to={`/lunch`}>
             <img
-              src={lunches[3].fields.image.fields.file.url}
+              src={lunches[randomnum].fields.image.fields.file.url}
               width="300px"
               height="300px"
             />
@@ -86,7 +121,7 @@ export default function Home(props) {
         <div class="home-categories">
           <Link to={`/dinner`}>
             <img
-              src={dinners[1].fields.image.fields.file.url}
+              src={dinners[randomnum].fields.image.fields.file.url}
               width="300px"
               height="300px"
             />
@@ -96,7 +131,7 @@ export default function Home(props) {
         <div class="home-categories">
           <Link to={`/dessert`}>
             <img
-              src={desserts[0].fields.image.fields.file.url}
+              src={desserts[randomnum].fields.image.fields.file.url}
               width="300px"
               height="300px"
             />
