@@ -37,7 +37,7 @@ export default function Home(props) {
     const intervalId = setInterval(() => {
       const len = arr.length;
       SetRandom(Math.floor(Math.random() * len));
-    }, 3000);
+    }, 5000);
     return () => clearInterval(intervalId);
   }
   useEffect(() => {
@@ -105,6 +105,7 @@ export default function Home(props) {
               src={breakfasts[randomnum].fields.image.fields.file.url}
               width="300px"
               height="300px"
+              style={{ borderRadius: "5px" }}
             />
             <h1>{breakfasts[3].fields.category}</h1>
           </Link>
@@ -115,6 +116,7 @@ export default function Home(props) {
               src={lunches[randomnum].fields.image.fields.file.url}
               width="300px"
               height="300px"
+              style={{ borderRadius: "5px" }}
             />
             <h1>{lunches[3].fields.category}</h1>
           </Link>
@@ -125,6 +127,7 @@ export default function Home(props) {
               src={dinners[randomnum].fields.image.fields.file.url}
               width="300px"
               height="300px"
+              style={{ borderRadius: "5px" }}
             />
             <h1>{dinners[1].fields.category}</h1>
           </Link>
@@ -135,6 +138,7 @@ export default function Home(props) {
               src={desserts[randomnum].fields.image.fields.file.url}
               width="300px"
               height="300px"
+              style={{ borderRadius: "5px" }}
             />
             <h1>{desserts[0].fields.category}</h1>
           </Link>
