@@ -37,7 +37,7 @@ export default function Home(props) {
     const intervalId = setInterval(() => {
       const len = arr.length;
       SetRandom(Math.floor(Math.random() * len));
-    }, 5000);
+    }, 4000);
     return () => clearInterval(intervalId);
   }
   useEffect(() => {
