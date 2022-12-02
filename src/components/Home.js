@@ -31,8 +31,11 @@ export default function Home(props) {
   const desserts = props.recipes.filter(
     (recipe) => recipe.fields.category === "Dessert"
   );
-
-  // get Random image using function
+  console.log("breakfast", breakfasts[0].fields.image.fields.file.url);
+  console.log("lunch", lunches[0].fields.image.fields.file.url);
+  console.log("dinner", dinners[0].fields.image.fields.file.url);
+  console.log("dessert", desserts[0].fields.image.fields.file.url);
+  // get Random image index using function
   function random(arr) {
     const intervalId = setInterval(() => {
       const len = arr.length;
@@ -40,6 +43,8 @@ export default function Home(props) {
     }, 4000);
     return () => clearInterval(intervalId);
   }
+  // call function inside useEffect pass variable as any category's as a length
+
   useEffect(() => {
     random(breakfasts);
   }, []);
@@ -51,50 +56,6 @@ export default function Home(props) {
   console.log("lunchurl", lunches[randomnum].fields.image.fields.file.url);
   console.log("dinner", dinners[randomnum].fields.image.fields.file.url);
   console.log("dessert", desserts[randomnum].fields.image.fields.file.url);
-  // const randomImageIndex = Math.floor(Math.random() * breakfasts.length);
-  // console.log(
-  //   "index",
-  //   breakfasts[randomImageIndex].fields.image.fields.file.url
-  // );
-  // const ary = [breakfasts, lunches, dinners, desserts];
-  // const myAry = ary.map((my) => console.log(my.ary));
-
-  // const b = breakfasts[randomImageIndex].fields.image.fields.file.url;
-  // const l = lunchUrl[randomImageIndex].fields.image.fields.file.url;
-
-  // setBreakfastUrl(b);
-  // useEffect(() => {
-  //   setBreakfastUrl(b);
-  // }, []);
-
-  // console.log("Breakfasts", breakfasts);
-  // console.log(breakfasts[0].fields.image.fields.file.url);
-  // const breakfast1 = breakfasts[0].fields.image.fields.file.url;
-  // const breakfast2 = breakfasts[1].fields.image.fields.file.url;
-  // const breakfast3 = breakfasts[2].fields.image.fields.file.url;
-  // const breakfast4 = breakfasts[3].fields.image.fields.file.url;
-  // console.log(breakfast1);
-  // const breakfastfotos = [breakfast1, breakfast2, breakfast3, breakfast4];
-
-  // console.log(breakfastfotos[3]);
-
-  //console.log("HEREE", breakfastUrl);
-
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     const renderImage = () => {
-  //       const randomImageIndex = Math.floor(
-  //         Math.random() * breakfastfotos.length
-  //       );
-  //       console.log("index", breakfastfotos[randomImageIndex]);
-  //       return setBreakfastUrl(breakfastfotos[randomImageIndex]);
-  //     };
-  //     renderImage();
-  //   }, 5000);
-  //   return () => {
-  //     clearInterval(intervalId);
-  //   };
-  // }, []);
 
   return (
     <div id="home">
