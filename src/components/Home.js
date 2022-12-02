@@ -7,9 +7,17 @@ import SearchBar from "./Searchbar";
 import Flag from "./flag.jpg";
 
 export default function Home(props) {
+  // get all recipes
+  // create 4 categories and filter out by category (state "breakfast" should contain all breakfast recipes)
+  // display each category's picture statically at first to confirm everything works
+  // create a function that changes the index of a given array every x amount of seconds
+  // the call to that function should happen inside of a useEffect
+
   console.log(props.recipes);
   const [breakfastUrl, setBreakfastUrl] = useState(false);
   const [lunchUrl, setLunchUrl] = useState(false);
+  const [dinnerUrl, setDinnerUrl] = useState(false);
+  const [dessertsUrl, setDessertsUrl] = useState(false);
 
   const breakfasts = props.recipes.filter(
     (recipe) => recipe.fields.category === "Breakfast"
@@ -36,35 +44,24 @@ export default function Home(props) {
   console.log(breakfast1);
   const breakfastfotos = [breakfast1, breakfast2, breakfast3, breakfast4];
 
-  console.log(breakfastfotos[3]);
+  // console.log(breakfastfotos[3]);
 
-  // const renderImage = () => {
-  //   // const Images = [
-  //   //   { image: `${breakfasts.fields.image.fields.file.url}` },
-  //   //   { image: `${breakfasts.fields.image.fields.file.url}` },
-  //   //   { image: `${breakfasts.fields.image.fields.file.url}` },
-  //   // ];
-  //   //console.log(Images);
-  //   const randomImageIndex = Math.floor(Math.random() * 3);
-  //   console.log("index", breakfastfotos[randomImageIndex]);
-  //   return setImageUrl(breakfastfotos[randomImageIndex]);
-  //   // console.log(breakfasts[randomImageIndex]);
-  // };
-  // renderImage();
+  console.log("HEREE", breakfastUrl);
+
   useEffect(() => {
-    const renderImage = () => {
-      // const Images = [
-      //   { image: `${breakfasts.fields.image.fields.file.url}` },
-      //   { image: `${breakfasts.fields.image.fields.file.url}` },
-      //   { image: `${breakfasts.fields.image.fields.file.url}` },
-      // ];
-      //console.log(Images);
-      const randomImageIndex = Math.floor(Math.random() * 3);
-      console.log("index", breakfastfotos[randomImageIndex]);
-      return setBreakfastUrl(breakfastfotos[randomImageIndex]);
-      // console.log(breakfasts[randomImageIndex]);
+    const intervalId = setInterval(() => {
+      const renderImage = () => {
+        const randomImageIndex = Math.floor(
+          Math.random() * breakfastfotos.length
+        );
+        console.log("index", breakfastfotos[randomImageIndex]);
+        return setBreakfastUrl(breakfastfotos[randomImageIndex]);
+      };
+      renderImage();
+    }, 5000);
+    return () => {
+      clearInterval(intervalId);
     };
-    renderImage();
   }, []);
 
   return (
