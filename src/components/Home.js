@@ -43,6 +43,7 @@ export default function Home(props) {
   useEffect(() => {
     random(breakfasts);
   }, []);
+  // Random image from all categories
   console.log(
     "breakfasturl",
     breakfasts[randomnum].fields.image.fields.file.url
