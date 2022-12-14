@@ -19,7 +19,7 @@ export default function Dinner(props) {
       {items.map((recipe, key) => {
         const recipeInstruction = marked(recipe.instructions);
         return (
-          <Link to={`/${recipe.category}/${recipe.id}`}>
+          <Link to={`/${recipe.category}/${recipe.recipe_id}`}>
             <div className="items">
               <div className="item-title">
                 <h1>{recipe.title}</h1>

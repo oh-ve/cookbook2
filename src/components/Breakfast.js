@@ -17,7 +17,7 @@ export default function Breakfast(props) {
     <div className="categories">
       {breakfasts.map((recipe, key) => {
         return (
-          <Link to={`/${recipe.category}/${recipe.id}`}>
+          <Link to={`/${recipe.category}/${recipe.recipe_id}`}>
             <div className="items">
               <div className="item-title">
                 <h1>{recipe.title}</h1>
