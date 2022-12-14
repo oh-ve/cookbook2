@@ -14,18 +14,32 @@ import Results from "./components/Results";
 
 function App() {
   const [recipes, setRecipes] = useState();
+  const url = "http://localhost:8080/api/recipes";
+
+  function fetchData() {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data", data);
+        setRecipes(data);
+      });
+  }
 
   useEffect(() => {
-    client
-      .getEntries()
-      .then((res) => {
-        setRecipes(res.items);
-
-        //     console.log(res.items);
-      })
-
-      .catch((e) => console.log(e));
+    fetchData();
   }, []);
+
+  // useEffect(() => {
+  //   client
+  //     .getEntries()
+  //     .then((res) => {
+  //       setRecipes(res.items);
+
+  //       //     console.log(res.items);
+  //     })
+
+  //     .catch((e) => console.log(e));
+  // }, []);
 
   return recipes ? (
     <div className="App">

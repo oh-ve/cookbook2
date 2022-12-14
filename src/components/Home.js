@@ -17,19 +17,17 @@ export default function Home(props) {
   const [randomnum, SetRandom] = useState(0);
 
   const breakfasts = props.recipes.filter(
-    (recipe) => recipe.fields.category === "Breakfast"
+    (recipe) => recipe.category === "Breakfast"
   );
 
-  const lunches = props.recipes.filter(
-    (recipe) => recipe.fields.category === "Lunch"
-  );
+  const lunches = props.recipes.filter((recipe) => recipe.category === "Lunch");
 
   const dinners = props.recipes.filter(
-    (recipe) => recipe.fields.category === "Dinner"
+    (recipe) => recipe.category === "Dinner"
   );
 
   const desserts = props.recipes.filter(
-    (recipe) => recipe.fields.category === "Dessert"
+    (recipe) => recipe.category === "Dessert"
   );
 
   // get Random image using function
@@ -44,13 +42,10 @@ export default function Home(props) {
     random(breakfasts);
   }, []);
   // Random image from all categories
-  console.log(
-    "breakfasturl",
-    breakfasts[randomnum].fields.image.fields.file.url
-  );
-  console.log("lunchurl", lunches[randomnum].fields.image.fields.file.url);
-  console.log("dinner", dinners[randomnum].fields.image.fields.file.url);
-  console.log("dessert", desserts[randomnum].fields.image.fields.file.url);
+  console.log("breakfasturl", breakfasts[randomnum].image);
+  console.log("lunchurl", lunches[randomnum].image);
+  console.log("dinner", dinners[randomnum].image);
+  console.log("dessert", desserts[randomnum].image);
   // const randomImageIndex = Math.floor(Math.random() * breakfasts.length);
   // console.log(
   //   "index",
@@ -102,45 +97,45 @@ export default function Home(props) {
         <div class="home-categories">
           <Link to={`/breakfast`}>
             <img
-              src={breakfasts[randomnum].fields.image.fields.file.url}
+              src={breakfasts[randomnum].image}
               width="300px"
               height="300px"
               style={{ borderRadius: "5px" }}
             />
-            <h1>{breakfasts[3].fields.category}</h1>
+            <h1>{breakfasts[3].category}</h1>
           </Link>
         </div>
         <div class="home-categories">
           <Link to={`/lunch`}>
             <img
-              src={lunches[randomnum].fields.image.fields.file.url}
+              src={lunches[randomnum].image}
               width="300px"
               height="300px"
               style={{ borderRadius: "5px" }}
             />
-            <h1>{lunches[3].fields.category}</h1>
+            <h1>{lunches[3].category}</h1>
           </Link>
         </div>
         <div class="home-categories">
           <Link to={`/dinner`}>
             <img
-              src={dinners[randomnum].fields.image.fields.file.url}
+              src={dinners[randomnum].image}
               width="300px"
               height="300px"
               style={{ borderRadius: "5px" }}
             />
-            <h1>{dinners[1].fields.category}</h1>
+            <h1>{dinners[1].category}</h1>
           </Link>
         </div>
         <div class="home-categories">
           <Link to={`/dessert`}>
             <img
-              src={desserts[randomnum].fields.image.fields.file.url}
+              src={desserts[randomnum].image}
               width="300px"
               height="300px"
               style={{ borderRadius: "5px" }}
             />
-            <h1>{desserts[0].fields.category}</h1>
+            <h1>{desserts[0].category}</h1>
           </Link>
         </div>
         {/* 

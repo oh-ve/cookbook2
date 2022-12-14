@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function Lunch(props) {
   console.log("props", props.recipes);
   const lunches = props.recipes.filter((data) => {
-    return data.fields.category === "Lunch";
+    return data.category === "Lunch";
   });
 
   const navigate = useNavigate();
@@ -15,26 +15,22 @@ export default function Lunch(props) {
     <div className="categories">
       {lunches.map((recipe, key) => {
         return (
-          <Link to={`/${recipe.fields.category}/${recipe.fields.id}`}>
+          <Link to={`/${recipe.category}/${recipe.id}`}>
             <div className="items">
               <div className="item-title">
-                <h1>{recipe.fields.title}</h1>
+                <h1>{recipe.title}</h1>
                 <div className="star-rating">
-                  {[...Array(recipe.fields.rating)].map(() => {
+                  {[...Array(recipe.rating)].map(() => {
                     return <span className="star">&#9733;</span>;
                   })}
-                  {[...Array(5 - recipe.fields.rating)].map(() => {
+                  {[...Array(5 - recipe.rating)].map(() => {
                     return <span className="star">&#9734;</span>;
                   })}
                 </div>
               </div>
 
               {/* <h2>{recipe.items}</h2> */}
-              <img
-                src={recipe.fields.image.fields.file.url}
-                width="200px"
-                height="200px"
-              />
+              <img src={recipe.image} width="200px" height="200px" />
             </div>
           </Link>
         );
