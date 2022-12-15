@@ -18,6 +18,13 @@ export default function Recipes({ recipes }) {
   console.log("string to ingredients array", recipeIngredients);
   const recipeInstruction = marked(SingleRecipe.instructions);
 
+  const recipeIngredients = SingleRecipe.ingredients.split(". ");
+
+  const recipeInstructions = SingleRecipe.instructions.split("//");
+
+  console.log(recipeIngredients);
+  console.log(recipeInstructions);
+
   return (
     <div>
       <div className="card">
@@ -50,11 +57,16 @@ export default function Recipes({ recipes }) {
 
         {/* <h5>Description: {console.log(recipe.fields.instructions)}</h5> */}
         <div className="method">
-          <h3>Instruction:</h3>
-          <section
+          <h3>Instructions:</h3>
+          <ol>
+            {recipeInstructions.map((inst) => (
+              <li>{inst}</li>
+            ))}
+          </ol>
+          {/* <section
             className="section"
             dangerouslySetInnerHTML={{ __html: recipeInstruction }}
-          />
+        />*/}
           <div id="return">
             <button onClick={() => navigate(-1)} className="btn">
               Back to {SingleRecipe.category.toLowerCase()}
