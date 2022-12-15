@@ -12,7 +12,10 @@ export default function Recipes({ recipes }) {
   console.log("Hello recipes", SingleRecipe);
   console.log(recipes);
   console.log(recipes[0].recipe_id);
-
+  // console.log(SingleRecipe.ingredients);
+  // console.log(SingleRecipe.instructions);
+  const recipeIngredients = SingleRecipe.ingredients.split(". ");
+  console.log("string to ingredients array", recipeIngredients);
   const recipeInstruction = marked(SingleRecipe.instructions);
 
   return (
@@ -37,13 +40,13 @@ export default function Recipes({ recipes }) {
       </div>
       <div className="card-body">
         <h3>Ingredients:</h3>
-        {SingleRecipe.ingredients}
-        {/* {SingleRecipe.ingredients.map((ingredient) => (
+
+        {recipeIngredients.map((ingredient) => (
           <div className="check">
             <input type="checkbox" id="scales" name="scales"></input>
             {ingredient}
           </div>
-        ))} */}
+        ))}
 
         {/* <h5>Description: {console.log(recipe.fields.instructions)}</h5> */}
         <div className="method">

@@ -9,21 +9,17 @@ export default function Results({ recipes }) {
     if (search === "") {
       return recipe;
     } else {
-      return recipe.fields.title.toLowerCase().includes(search);
+      return recipe.title.toLowerCase().includes(search);
     }
   });
   return (
     <div>
       {result.map((recipe) => (
         <div key={uuidv4()} className="result">
-          <Link to={`/${recipe.fields.category}/${recipe.fields.id}`}>
-            <h2>{recipe.fields.title}</h2>
+          <Link to={`/${recipe.category}/${recipe.recipe_id}`}>
+            <h2>{recipe.title}</h2>
           </Link>
-          <img
-            src={recipe.fields.image.fields.file.url}
-            alt={recipe.fields.title}
-            className="img"
-          />
+          <img src={recipe.image} alt={recipe.title} className="img" />
         </div>
       ))}
     </div>
