@@ -15,6 +15,13 @@ export default function Recipes({ recipes }) {
 
   const recipeInstruction = marked(SingleRecipe.instructions);
 
+  const recipeIngredients = SingleRecipe.ingredients.split(". ");
+
+  const recipeInstructions = SingleRecipe.instructions.split("//");
+
+  console.log(recipeIngredients);
+  console.log(recipeInstructions);
+
   return (
     <div>
       <div className="card">
@@ -37,21 +44,26 @@ export default function Recipes({ recipes }) {
       </div>
       <div className="card-body">
         <h3>Ingredients:</h3>
-        {SingleRecipe.ingredients}
-        {/* {SingleRecipe.ingredients.map((ingredient) => (
+
+        {recipeIngredients.map((ingredient) => (
           <div className="check">
             <input type="checkbox" id="scales" name="scales"></input>
             {ingredient}
           </div>
-        ))} */}
+        ))}
 
         {/* <h5>Description: {console.log(recipe.fields.instructions)}</h5> */}
         <div className="method">
-          <h3>Instruction:</h3>
-          <section
+          <h3>Instructions:</h3>
+          <ol>
+            {recipeInstructions.map((inst) => (
+              <li>{inst}</li>
+            ))}
+          </ol>
+          {/* <section
             className="section"
             dangerouslySetInnerHTML={{ __html: recipeInstruction }}
-          />
+        />*/}
           <div id="return">
             <button onClick={() => navigate(-1)} className="btn">
               Back to {SingleRecipe.category.toLowerCase()}
