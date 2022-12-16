@@ -58,7 +58,10 @@ export default function Recipes({ recipes }) {
           <h3>Instructions:</h3>
           <ol>
             {recipeInstructions.map((inst) => (
-              <li>{inst}</li>
+              <div>
+                <li>{inst}</li>
+                <br />
+              </div>
             ))}
           </ol>
           {/* <section

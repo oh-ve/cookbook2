@@ -21,8 +21,8 @@ export default function Results({ recipes }) {
         <div key={uuidv4()} className="result">
           <Link to={`/${recipe.category}/${recipe.recipe_id}`}>
             <h2>{recipe.title}</h2>
+            <img src={recipe.image} alt={recipe.title} className="img" />
           </Link>
-          <img src={recipe.image} alt={recipe.title} className="img" />
         </div>
       ))}
     </div>
