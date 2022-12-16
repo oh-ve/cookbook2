@@ -11,6 +11,7 @@ import Recipes from "./components/Recipes";
 import { Routes, Route } from "react-router-dom";
 import Flag from "./components/flag.jpg";
 import Results from "./components/Results";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   const [recipes, setRecipes] = useState();
@@ -57,6 +58,7 @@ function App() {
         <Route path="/dessert/:id" element={<Recipes recipes={recipes} />} />
         <Route path="/search/:search" element={<Results recipes={recipes} />} />
         {/* <Routes path="/recipes" element={<Recipes recipes={recipes} />} /> */}
+        {/* <Route path="*" element={<ErrorPage />} /> */}
       </Routes>
     </div>
   ) : (

@@ -1,17 +1,20 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./Results.css";
 
 export default function Results({ recipes }) {
   const { search } = useParams();
+  const [error, setError] = useState(null);
   const result = recipes.filter((recipe) => {
-    console.log("result", recipes);
+    //console.log("result", recipes);
     if (search === "") {
       return recipe;
     } else {
       return recipe.title.toLowerCase().includes(search);
     }
   });
+
   return (
     <div>
       {result.map((recipe) => (

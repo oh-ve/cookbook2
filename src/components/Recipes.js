@@ -17,9 +17,7 @@ export default function Recipes({ recipes }) {
   const recipeIngredients = SingleRecipe.ingredients.split(". ");
   console.log("string to ingredients array", recipeIngredients);
   const recipeInstruction = marked(SingleRecipe.instructions);
-
-  const recipeIngredients = SingleRecipe.ingredients.split(". ");
-
+  console.log("string to instruction array", recipeInstruction);
   const recipeInstructions = SingleRecipe.instructions.split("//");
 
   console.log(recipeIngredients);
