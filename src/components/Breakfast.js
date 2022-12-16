@@ -8,7 +8,7 @@ import "./categories.css";
 export default function Breakfast(props) {
   console.log("props", props.recipes);
   const breakfasts = props.recipes.filter((data) => {
-    return data.fields.category === "Breakfast";
+    return data.category === "Breakfast";
   });
 
   const navigate = useNavigate();
@@ -17,22 +17,22 @@ export default function Breakfast(props) {
     <div className="categories">
       {breakfasts.map((recipe, key) => {
         return (
-          <Link to={`/${recipe.fields.category}/${recipe.fields.id}`}>
+          <Link to={`/${recipe.category}/${recipe.recipe_id}`}>
             <div className="items">
               <div className="item-title">
-                <h1>{recipe.fields.title}</h1>
+                <h1>{recipe.title}</h1>
 
                 <div className="star-rating">
-                  {[...Array(recipe.fields.rating)].map(() => {
+                  {[...Array(recipe.rating)].map(() => {
                     return <span className="star">&#9733;</span>;
                   })}
-                  {[...Array(5 - recipe.fields.rating)].map(() => {
+                  {[...Array(5 - recipe.rating)].map(() => {
                     return <span className="star">&#9734;</span>;
                   })}
                 </div>
               </div>
               <img
-                src={recipe.fields.image.fields.file.url}
+                src={recipe.image}
                 width="200px"
                 height="200px"
                 className="item-img"

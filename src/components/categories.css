@@ -25,8 +25,7 @@
 .item-img {
   border-radius: 2px;
 }
-.button {
-  position: relative;
+/* .button {
   background-color: #ed5778;
   border: none;
   color: white;
@@ -35,15 +34,15 @@
   text-decoration: none;
   display: inline-block;
   font-size: 11px;
-  /* margin: 2px 4px; */
   transition-duration: 0.4s;
   cursor: pointer;
-}
+} 
+
 .button:hover {
   background-color: white;
   color: black;
   border: 2px solid #394ce1;
-}
+} */
 .items:hover {
   box-shadow: 2px 2px 2px whitesmoke;
 }

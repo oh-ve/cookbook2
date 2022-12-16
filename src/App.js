@@ -11,21 +11,36 @@ import Recipes from "./components/Recipes";
 import { Routes, Route } from "react-router-dom";
 import Flag from "./components/flag.jpg";
 import Results from "./components/Results";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   const [recipes, setRecipes] = useState();
+  const url = "http://localhost:8080/api/recipes";
+
+  function fetchData() {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data", data);
+        setRecipes(data);
+      });
+  }
 
   useEffect(() => {
-    client
-      .getEntries()
-      .then((res) => {
-        setRecipes(res.items);
-
-        //     console.log(res.items);
-      })
-
-      .catch((e) => console.log(e));
+    fetchData();
   }, []);
+
+  // useEffect(() => {
+  //   client
+  //     .getEntries()
+  //     .then((res) => {
+  //       setRecipes(res.items);
+
+  //       //     console.log(res.items);
+  //     })
+
+  //     .catch((e) => console.log(e));
+  // }, []);
 
   return recipes ? (
     <div className="App">
@@ -43,6 +58,7 @@ function App() {
         <Route path="/dessert/:id" element={<Recipes recipes={recipes} />} />
         <Route path="/search/:search" element={<Results recipes={recipes} />} />
         {/* <Routes path="/recipes" element={<Recipes recipes={recipes} />} /> */}
+        {/* <Route path="*" element={<ErrorPage />} /> */}
       </Routes>
     </div>
   ) : (

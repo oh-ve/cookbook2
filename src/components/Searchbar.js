@@ -12,6 +12,7 @@ const SearchBar = (props) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
     navigate(`search/${searchInput}`);
   };
   //console.log("search", props.recipes);
