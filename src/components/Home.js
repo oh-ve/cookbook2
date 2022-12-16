@@ -29,8 +29,11 @@ export default function Home(props) {
   const desserts = props.recipes.filter(
     (recipe) => recipe.category === "Dessert"
   );
-
-  // get Random image using function
+  console.log("breakfast", breakfasts[0].fields.image.fields.file.url);
+  console.log("lunch", lunches[0].fields.image.fields.file.url);
+  console.log("dinner", dinners[0].fields.image.fields.file.url);
+  console.log("dessert", desserts[0].fields.image.fields.file.url);
+  // get Random image index using function
   function random(arr) {
     const intervalId = setInterval(() => {
       const len = arr.length;
@@ -38,10 +41,13 @@ export default function Home(props) {
     }, 4000);
     return () => clearInterval(intervalId);
   }
+  // call function inside useEffect pass variable as any category's as a length
+
   useEffect(() => {
     random(breakfasts);
   }, []);
   // Random image from all categories
+
   console.log("breakfasturl", breakfasts[randomnum].image);
   console.log("lunchurl", lunches[randomnum].image);
   console.log("dinner", dinners[randomnum].image);
@@ -90,6 +96,7 @@ export default function Home(props) {
   //     clearInterval(intervalId);
   //   };
   // }, []);
+
 
   return (
     <div id="home">
