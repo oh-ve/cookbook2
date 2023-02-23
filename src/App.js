@@ -15,7 +15,7 @@ import ErrorPage from "./components/ErrorPage";
 
 function App() {
   const [recipes, setRecipes] = useState();
-  const url = "http://localhost:8080/api/recipes";
+  const url = "https://barmyfood.onrender.com/api/recipes";
 
   function fetchData() {
     fetch(url)
